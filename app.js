@@ -9,3 +9,7 @@ const app = express()
 app.use( express.static(publicPath))
 
 app.listen(3000, () => console.log('servidor funcionando'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './views/index.html'))
+})
