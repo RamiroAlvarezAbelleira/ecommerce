@@ -148,4 +148,6 @@ section article p.article-price {
 }
 /*FOOTER*/
 
-
+section.footer-benefits {
+    display: flex;
+}
