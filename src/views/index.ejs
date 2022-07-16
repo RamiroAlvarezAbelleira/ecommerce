@@ -1,63 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="https://kit.fontawesome.com/defa99e147.js" crossorigin="anonymous"></script>
-    <script src="../../public/js/script.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-</head>
+    
+    <%- include ('./partials/head') %>  
+
 <body>
-    <header>
-        <div class="logo">
-            <img id="logo" src="\images\logo3.png" alt="logo">
-        </div>
+    <!--HEADER-->
 
-        <div class="mobile-buscador">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
+    <%- include ('./partials/header') %> 
 
-        <form id="buscador">
+    <!--NAV-->
 
-            <label for="buscador-text-input">
-                <input  id="search-input" type="text" name="buscador-text-input" value="buscar">
-            </label>
-            
-            <label for="buscador-button">
-                <input class="buscador" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </label>
-            
-        </form>
-
-        <div class="signup-login">
-            <a href="#" >Sign up</a>
-            <span>|</span>
-            <a href="#" >Log in</a>
-        </div>
-
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-
-        <nav>
-            <ul class="nav-sections">
-                <li class="nav-section"><a href="#" class="nav-link">seccion 1</a></li>
-                <li class="nav-section"><a href="#" class="nav-link">seccion 2</a></li>
-                <li class="nav-section"><a href="#" class="nav-link">seccion 3</a></li>
-                <li class="nav-section"><a href="#" class="nav-link">seccion 4</a></li>
-                <li class="nav-section"><a href="#" class="nav-link">seccion 5</a></li>
-            </ul>
-        </nav>
-            
-    </header>
+    <%- include ('./partials/nav') %> 
 
     <main>
 
@@ -169,67 +122,10 @@
         </section>
     </main>
 
-    <footer>
-        <section class="footer-benefits">
-            <div>
-                <i class="fa-solid fa-truck-fast"></i>
-                <h3>ENVÍOS GRATIS</h3>
-                <p>Entregas a todo el país sin cargo</p>
-            </div>
-            <div>
-                <i class="fa-solid fa-credit-card"></i>
-                <h3>PAGÁ COMO QUIERAS</h3>
-                <p>Tarjetas de crédito o efectivo</p>
-            </div>
-            <div>
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>COMPRÁ CON SEGURIDAD</h3>
-                <p>Tus datos siempre protegidos</p>
-            </div>
-        </section>
+    <!--FOOTER-->
 
-        <section class="social-media">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-facebook-square"></i>
-                <i class="fa-brands fa-twitter"></i>
-        </section>
-
-        <section class="footer-contact-nav">
-            <div class="contact">
-                <h4>Contacto</h4>
-                <p><i class="fa-solid fa-phone"></i> 4982-3418 / 4958-1405</p>
-                <p><i class="fa-brands fa-whatsapp"></i> +5491123887694</p>
-                <p><i class="fa-solid fa-envelope"></i> ventas@bicimundo.com.ar</p>
-                <p><i class="fa-solid fa-location-dot"></i> Av. Diaz Velez 4702, CABA, buenos aires, Argentina</p>
-                <p><i class="fa-solid fa-clock"></i> 10hs a 18hs</p>
-            </div>
-            <div class="footer-nav">
-                <h4>Navegacion</h4>
-                <div class="links">
-                    <a href="#">Home</a>
-                    <a href="#">Productos</a>
-                    <a href="#">Ayuda</a>
-                </div>
-            </div>
-            <div class="acount">
-                <h4>Cuenta</h4>
-                <div class="links">
-                    <a href="#">Crear cuenta</a>
-                    <a href="#">Iniciar sesion</a>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="copyrights">
-                <h4><i class="fa-solid fa-copyright"></i> 2016-2022 Desarrollado por Ramiro Alvarez</h4>
-                <p>Las fotos son a modo ilustrativo. La venta de cualquiera de los productos publicados está sujeta a 
-                    la verificación de stock. Los precios online y los planes de financiación para los productos presentados/publicados son 
-                    válidos exclusivamente para la compra vía internet en las páginas antes mencionadas.
-                    Las especificaciones técnicas y descripciones están sujetas a cambios sin previo aviso.</p>
-            </div>
-        </section>
-    </footer>
+    <%- include('./partials/footer')  %> 
+    
 </body>
 <script>
     const hamburger = document.querySelector(".hamburger");

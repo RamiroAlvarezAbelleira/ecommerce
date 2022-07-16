@@ -10,11 +10,17 @@ const port = 3000;
 
 const mainRoutes = require('./routes/main');
 
-app.listen(port, () => console.log(`servidor funcionando en el puerto ${port}`));
+app.set('view engine', 'ejs');
+
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(publicPath));
 
-app.use(mainRoutes);
+app.use('/', mainRoutes);
+
+app.listen(port, () => console.log(`servidor funcionando en el puerto ${port}`));
+
+
 
 
 

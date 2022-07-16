@@ -105,8 +105,6 @@ header {
 img#logo {
     width: 40vw;
     justify-self: center;
-    position: relative;
-    left: 5vw;
 }
 
 /*MAIN*/
