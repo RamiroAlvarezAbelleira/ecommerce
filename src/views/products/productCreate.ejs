@@ -13,10 +13,10 @@
 
     <%- include ('../partials/nav') %> 
 
-    <main>
+    <main class="crud-main">
         <h2>Crear producto</h2>
 
-        <form action="/productos/Crear" method="POST">
+        <form class="crud-form" action="/productos/Crear" method="POST">
             <div class="form-section">
                 <label class="section-label" for="id">ID: </label>
                 <input type="number" name="id" id="id" required>
@@ -94,8 +94,10 @@
                 <label class="section-label" for="info">Info: </label>
                 <input type="number" name="info" id="info">
             </div>
-            <button class="clear-button" type="reset">Limpiar</button>
-            <button class="submit-button" type="submit">Crear</button>
+            <div class="button-section">
+                <button class="clear-button" type="reset">Limpiar</button>
+                <button class="submit-button" type="submit">Crear</button>
+            </div>
         </form>
     </main>
 
