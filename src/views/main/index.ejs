@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--HEAD-->
+    
+    <%- include ('../partials/head') %>  
+
+<body>
+    <!--HEADER-->
+
+    <%- include ('../partials/header') %> 
+
+    <!--NAV-->
+
+    <%- include ('../partials/nav') %> 
+
+    <main>
+
+        <div class="slider-container">
+            <div class="slide" id="slide-1">
+                <div class="slider-img" ><img src="\images\slide-mobile-1.jpg" alt="slide-1"></div>
+                <div class="slider-arrows">
+                    <a href="#slide-2"><i class="fa-solid fa-angle-left"></i></a>
+                    <a href="#slide-2"><i class="fa-solid fa-angle-right"></i></a>
+                </div>
+            </div>
+            <div class="slide" id="slide-2">
+                <div class="slider-img" ><img src="\images\slide-mobile-2.jpg" alt="slide-2"></div>
+                <div class="slider-arrows">
+                    <a href="#slide-1"><i class="fa-solid fa-angle-left"></i></a>
+                    <a href="#slide-1"><i class="fa-solid fa-angle-right"></i></a>
+                </div>
+            </div>
+            </div> 
+        </div>
+        <div id="slider-points">
+            <a href="#slide-1"><i class="fa-solid fa-circle"></i></a>
+            <a href="#slide-2"><i class="fa-solid fa-circle"></i></a>
+        </div>
+
+        
+
+        <section id="destacados">
+            
+            <h2>Destacados</h2>
+
+            <% bicisMtb.forEach((bici) => { %> 
+
+                <article>
+                    <% if(bici.sale > 0) { %> 
+                    <p class="article-discount"><%= bici.sale %>% OFF</p>
+                    <% } %> 
+                    <figure class="img-container">
+                        <img src="\images\<%= bici.img %>"  alt="imagen articulo">
+                    </figure>
+                    <p class="article-name"><%= bici.nameDescription %> </p>
+                    <p class="article-price">$ <%= bici.price %> </p>
+                </article>
+        
+                <% }) %>
+        
+        </section>
+        
+    </main>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer')  %> 
+    
+</body>
+</html>

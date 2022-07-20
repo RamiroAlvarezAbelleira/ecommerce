@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--HEAD-->
+    
+    <%- include ('../partials/head') %>  
+
+<body>
+    <!--HEADER-->
+
+    <%- include ('../partials/header') %> 
+
+    <!--NAV-->
+
+    <%- include ('../partials/nav') %> 
+
+    <main>
+        <h2>Crear producto</h2>
+
+        <form action="/productos/Crear" method="POST">
+            <div class="form-section">
+                <label class="section-label" for="id">ID: </label>
+                <input type="number" name="id" id="id" required>
+            </div>
+            <div class="form-section">
+                <label class="section-label">Producto: </label>
+                <label class="radio-label">Bicicleta
+                    <input type="radio" name="product" value="bicicleta">
+                </label>
+                <label class="radio-label">Accesorio
+                    <input type="radio" name="product" value="accesorio">
+                </label>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="type">Tipo de articulo: </label>
+                <input type="text" name="type" id="type" placeholder="mtb, ruta, zapatillas..." required>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="description">Descripcion: </label>
+                <input type="text" name="description" id="description" required>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="image">Adjunte una imagen: </label>
+                <input type="file" name="image" id="image">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="price">Precio: </label>
+                <input type="number" name="price" id="price" required>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="discount">Descuento: </label>
+                <input type="number" name="discount" id="discount">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="brand">Marca: </label>
+                <input type="text" name="brand" id="brand">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="model">Modelo: </label>
+                <input type="text" name="model" id="model">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="size">Talle: </label>
+                <input type="text" name="size" id="size" placeholder="M, S, L...">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="color">Color: </label>
+                <input type="text" name="color" id="color">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="rolled">Rodado: </label>
+                <input type="number" name="rolled" id="rolled">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="frame">Cuadro: </label>
+                <input type="text" name="frame" id="frame">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="shifter">Velocidades: </label>
+                <input type="text" name="shifter" id="shifter">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="brakes">Frenos: </label>
+                <input type="text" name="brakes" id="brakes">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="suspention">Suspension: </label>
+                <input type="text" name="suspention" id="suspention">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="tires">Cubiertas: </label>
+                <input type="text" name="tires" id="tires">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="info">Info: </label>
+                <input type="number" name="info" id="info">
+            </div>
+            <button class="clear-button" type="reset">Limpiar</button>
+            <button class="submit-button" type="submit">Crear</button>
+        </form>
+    </main>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer')  %> 
+    
+</body>
+</html>

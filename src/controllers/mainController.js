@@ -1,11 +1,22 @@
+const fs = require('fs');
 const path = require('path');
 
-const indexPath = path.join(__dirname, '../views/index.html')
 
 const controlador = {
 
     index : (req, res) => {
-        res.render('index');
+        const bicisMtbJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
+        let bicisMtb
+        if (bicisMtbJSON == "") {
+            bicisMtb = [];
+        }
+        else {
+            bicisMtb = JSON.parse(bicisMtbJSON);
+        }
+        
+        res.render('main/index', {
+            bicisMtb: bicisMtb
+        });
     }
 };
 
