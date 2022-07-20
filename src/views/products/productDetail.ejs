@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--HEAD-->
+    
+    <%- include ('../partials/head') %>  
+
+<body>
+    <!--HEADER-->
+
+    <%- include ('../partials/header') %> 
+
+    <!--NAV-->
+
+    <%- include ('../partials/nav') %> 
+
+    <main class="product-detail-main">
+        <article class="product-detail">
+            <div class="img-container">
+                <img src="\images\<%= product.image %>" alt="<%= product.description %>">
+            </div>
+            <div class="right-container">
+                <h3><%= product.description %></h3>
+                <h6><%= product.discount %>% OFF</h6>
+                <h5>$ <%= product.price %></h5>
+                <a href="/carrito">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div class="details">
+                <h4>Especificaciones</h4>
+                <p>Marca: <%= product.brand %></p>
+                <p>Modelo: <%= product.model %></p>
+                <p>Talla: <%= product.size %></p>
+                <p>Color: <%= product.color %></p>
+                <p>Rodado: <%= product.rolled %></p>
+                <p>Cuadro: <%= product.frame %></p>
+                <p>Velocidades: <%= product.shifter %></p>
+                <p>Frenos: <%= product.brakes %></p>
+                <p>Horquilla de suspension: <%= product.suspention %></p>
+            </div>
+        </article>
+    </main>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer')  %> 
+    
+</body>
+</html>

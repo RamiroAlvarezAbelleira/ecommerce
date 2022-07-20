@@ -45,7 +45,7 @@
 
             <% bicisMtb.forEach((bici) => { %> 
 
-                <article>
+                <a href="/productos/detalle/<%= bici.id %>"><article>
                     <% if(bici.discount > 0) { %> 
                     <p class="article-discount"><%= bici.discount %>% OFF</p>
                     <% } %> 
@@ -54,7 +54,7 @@
                     </figure>
                     <p class="article-name"><%= bici.description %> </p>
                     <p class="article-price">$ <%= bici.price %> </p>
-                </article>
+                </article></a>
         
                 <% }) %>
         

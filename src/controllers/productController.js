@@ -1,7 +1,16 @@
 const fs = require('fs');
-const path = require('path');
 
 const controlador = {
+
+    productDetail : (req, res) => {
+        let id = Number(req.params.id);
+        let productsJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
+        let products = JSON.parse(productsJSON);
+        let product = products.find(producto => producto.id == id);
+
+        res.render('products/productDetail', {product});
+
+    },
 
     productCreateForm : (req, res) => {
         res.render('products/productCreate');

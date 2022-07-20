@@ -167,6 +167,11 @@ section h2 {
     text-align: center;
 }
 
+section a {
+    text-decoration: none;
+    list-style: none;
+}
+
 section article {
     background-color: #ffffff;
     width: 80vw;
@@ -193,6 +198,7 @@ section article p.article-name {
     text-align: center;
     width: 100%;
     padding: 2%;
+    color: #262626;
 }
 
 section article p.article-discount {
@@ -274,6 +280,76 @@ div.button-section button{
     color: white;
     box-shadow: 2px 2px 7px grey;
 }
+
+/*PRODUCT DETAIL*/
+
+main.product-detail-main {
+    margin: 40px 10vw;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px grey;
+}
+
+article.product-detail div.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article.product-detail div.img-container img {
+    width: 80%;
+    margin-top: 20px;
+}
+
+main.product-detail-main article.product-detail div.right-container h3 {
+    text-align: center;
+    padding: 20px 0;
+    margin: 5px 0;
+}
+main.product-detail-main article.product-detail div.right-container h6 {
+    text-align: end;
+    margin: 10px 10vw;
+    font-size: 13px;
+    color: rgb(0, 158, 0);
+}
+
+main.product-detail-main article.product-detail div.right-container h5 {
+    text-align: end;
+    margin: 10px 8vw;
+    margin-bottom: 40px;
+    font-size: 20px;
+    color: #656565;
+}
+
+main.product-detail-main article.product-detail div.right-container a {
+    text-decoration: none;
+    margin: 0 12vw;
+    padding: 5px 20px;
+    width: 100%;
+    height: 8vw;
+    border: 2px solid rgb(255, 127, 39);
+    border-radius: 3px 5px 1px 5px;
+    background-color: #4e4e4e;
+    color: white;
+    box-shadow: 2px 2px 7px grey;
+}
+
+main.product-detail-main article.product-detail div.details {
+    margin: 20px;
+    margin-top: 60px;
+    padding: 10px 20px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 6px;
+}
+
+main.product-detail-main article.product-detail div.details p {
+    border-top: 1px solid white;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+
 
 /*FOOTER*/
 
