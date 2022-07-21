@@ -322,17 +322,51 @@ main.product-detail-main article.product-detail div.right-container h5 {
     color: #656565;
 }
 
+main.product-detail-main article.product-detail div.right-container div.add-to-cart {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
 main.product-detail-main article.product-detail div.right-container a {
     text-decoration: none;
-    margin: 0 12vw;
-    padding: 5px 20px;
-    width: 100%;
-    height: 8vw;
+    text-align: center;
+    padding: 5px 10px 6px 10px;
+    width: 80%;
     border: 2px solid rgb(255, 127, 39);
     border-radius: 3px 5px 1px 5px;
     background-color: #4e4e4e;
     color: white;
     box-shadow: 2px 2px 7px grey;
+}
+
+main.product-detail-main article.product-detail div.right-container div.edit-delete-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10vw 0;
+}
+
+main.product-detail-main article.product-detail div.right-container div.edit-delete-container a {
+    width: 40%;
+}
+
+main.product-detail-main article.product-detail div.right-container div.edit-delete-container form {
+    width: 40%;
+}
+
+main.product-detail-main article.product-detail div.right-container div.edit-delete-container button {
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px 10px 6px 10px;
+    border: 2px solid rgb(255, 127, 39);
+    border-radius: 3px 5px 1px 5px;
+    background-color: #4e4e4e;
+    color: white;
+    box-shadow: 2px 2px 7px grey;
+    font-size: 16.5px;
 }
 
 main.product-detail-main article.product-detail div.details {
