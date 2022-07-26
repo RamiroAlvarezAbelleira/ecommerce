@@ -27,7 +27,7 @@ nav {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: -100%;
+    top: 30vw;
     right: 0;
     opacity: 0;
     width: 100%;
@@ -36,23 +36,85 @@ nav {
     transition: 0.6s;
 }
 
+.nav-sections.active {
+    opacity: 0.9;
+}
+
+
 .nav-section {
     margin: 10px 0;
 }
 
-.nav-section a {
+.nav-link1 {
+    display: none;
+}
+
+.nav-link2 {
+    display: none;
+}
+
+.nav-link3 {
+    display: none;
+}
+
+.nav-link4 {
+    display: none;
+}
+
+.nav-link5 {
+    display: none;
+}
+
+.nav-link6 {
+    display: none;
+}
+
+.nav-link1.active {
+    display: block;
     text-decoration: none;
     list-style: none;
     color: white;
 }
 
-.nav-sections.active {
-    top: 30vw;
-    opacity: 0.9;
+.nav-link2.active {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+    color: white;
 }
 
+.nav-link3.active {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+.nav-link4.active {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+.nav-link5.active {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+.nav-link6.active {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+
+
 header {
-    background-color: rgb(255, 127, 39);
+    background-color: #262626;
+    border-bottom: 3px solid rgb(255, 127, 39);
     display: flex;
     height: 30vw;
     justify-content: space-around;
@@ -65,7 +127,8 @@ header {
     font-size: 20px;
     padding: 3px 8px;
     border-radius: 5px;
-    background: linear-gradient(125deg, rgba(189, 79, 0, 0.6), rgba(255, 164, 99, 0.5));
+    background: #262626;
+    color: rgb(255, 127, 39);
 }
 
 .hamburger {
@@ -73,7 +136,7 @@ header {
     font-size: 5vw;
     padding: 5px 8px;
     border-radius: 5px;
-    background: linear-gradient(125deg, rgba(189, 79, 0, 0.6), rgba(255, 164, 99, 0.5));
+    background: #262626;
 }
 
 .bar {
@@ -83,7 +146,7 @@ header {
     margin: 4px auto;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    background-color: black;
+    background-color: rgb(255, 127, 39);
 }
 
 .hamburger.active .bar:nth-child(2) {
@@ -165,6 +228,14 @@ body {
 
 section h2 {
     text-align: center;
+    margin: 15vw 5vw;
+    padding: 0 5px;
+    background-color: #262626;
+    color: #ffffff;
+    border-radius: 15px;
+    border-bottom: 3px solid rgb(255, 127, 39);
+    border-top: 3px solid rgb(255, 127, 39);
+    box-shadow: 0 0 10px grey;
 }
 
 section a {
@@ -218,7 +289,7 @@ section article p.article-price {
 /*PRODUCT CREATE FORM*/
 
 main.crud-main {
-    margin: 5vw;
+    margin: 10vw 5vw;
     padding: 20px 30px;
     background-color: white;
     border-radius: 10px;
@@ -227,14 +298,21 @@ main.crud-main {
 
 main.crud-main h2 {
     text-align: center;
-    background-color: rgb(255, 127, 39);
-    color: white;
-    margin: 5vw;
-    border: 2px solid rgb(255, 127, 39);
-    border-radius: 3px 5px 1px 5px;
-    background-color: #4e4e4e;
-    color: white;
-    box-shadow: 2px 2px 7px grey;
+    margin: 8vw 2vw;
+    padding: 0 5px;
+    background-color: #262626;
+    color: #ffffff;
+    border-radius: 15px;
+    border-bottom: 3px solid rgb(255, 127, 39);
+    border-top: 3px solid rgb(255, 127, 39);
+    box-shadow: 0 0 10px grey;
+}
+
+div.form-section i {
+    text-align: center;
+    width: 100%;
+    font-size: 100px;
+    color: #4d4d4d;
 }
 
 div.form-section label.section-label{
@@ -268,15 +346,17 @@ div.button-section {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 40px 20px 20px 20px;
+    margin: 40px 0 20px 0;
 }
 
 div.button-section button{
-    width: 25vw;
-    height: 8vw;
-    border: 2px solid rgb(255, 127, 39);
-    border-radius: 3px 5px 1px 5px;
-    background-color: #4e4e4e;
+    width: 30vw;
+    height: 10vw;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(255, 127, 39);
+    border-top: 2px solid rgb(255, 127, 39);
+    background-color: #262626;
     color: white;
     box-shadow: 2px 2px 7px grey;
 }
@@ -333,10 +413,11 @@ main.product-detail-main article.product-detail div.right-container a {
     text-decoration: none;
     text-align: center;
     padding: 5px 10px 6px 10px;
-    width: 80%;
-    border: 2px solid rgb(255, 127, 39);
-    border-radius: 3px 5px 1px 5px;
-    background-color: #4e4e4e;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(255, 127, 39);
+    border-top: 2px solid rgb(255, 127, 39);
+    background-color: #262626;
     color: white;
     box-shadow: 2px 2px 7px grey;
 }
@@ -361,12 +442,14 @@ main.product-detail-main article.product-detail div.right-container div.edit-del
     text-decoration: none;
     text-align: center;
     padding: 5px 10px 6px 10px;
-    border: 2px solid rgb(255, 127, 39);
-    border-radius: 3px 5px 1px 5px;
-    background-color: #4e4e4e;
+    border: none;
+    border-radius: 10px;
+    border-bottom: 2px solid rgb(255, 127, 39);
+    border-top: 2px solid rgb(255, 127, 39);
+    background-color: #262626;
     color: white;
     box-shadow: 2px 2px 7px grey;
-    font-size: 16.5px;
+    font-size: 16px;
 }
 
 main.product-detail-main article.product-detail div.details {

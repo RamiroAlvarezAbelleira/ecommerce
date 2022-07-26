@@ -1,6 +1,13 @@
 const fs = require('fs');
+const jsonDB = require('../model/jsonDatabase');
+const productModel = jsonDB('bicisMtb');
 
 const controlador = {
+
+    list: (req, res) => {
+        const products = productModel.readFile();
+        res.render('products/products', {products});
+    },
 
     productDetail : (req, res) => {
         let id = Number(req.params.id);

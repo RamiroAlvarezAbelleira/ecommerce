@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--HEAD-->
+    
+    <%- include ('../partials/head') %>  
+
+<body>
+    <!--HEADER-->
+
+    <%- include ('../partials/header') %> 
+
+    <!--NAV-->
+
+    <%- include ('../partials/nav') %> 
+
+    <main class="crud-main">
+        <h2>Crea tu cuenta</h2>
+
+        <form class="crud-form" action="/usuarios/register" method="POST">
+            <div class="form-section">
+                <i class="fa-solid fa-circle-user"></i>
+                <label class="section-label" for="image">Adjunte una imagen: </label>
+                <input type="file" name="image" id="image" accept=".jpg, .png">
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="firstname">Nombre: </label>
+                <input type="text" name="firstname" id="firstname" placeholder="Juan" required>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="lastname">Apellido/s: </label>
+                <input type="text" name="lastname" id="lastname" placeholder="Perez" required>
+            </div>
+            
+            <div class="form-section">
+                <label class="section-label" for="date">Fecha de nacimiento:</label>
+                <input type="date" name="birthdate" value="1987-01-25" required id="date" min="1900-01-01" max="2010-01-01">
+                <span class="feedback"></span>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="email">Email:</label>
+                <input type="email" name="email" placeholder="johndow@mail.com" required id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <span class="feedback"></span>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="password">Password:</label>
+                <input type="password" name="password" placeholder="Password" required id="password" minLength="8">
+                <span class="feedback"></span>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="confirm-password">Confirmar contraseña:</label>
+                <input type="password" name="user-confirm-password" placeholder="Repeat password" required id="confirm-password" minLength="8">
+                <span class="feedback"></span>
+            </div>
+            <div class="form-section">
+                <label class="section-label" for="phone">Telefono (opcional):</label>
+                <input type="tel" name="phonenumber" placeholder="+54 911 5678 1234" id="phone">
+                <span class="feedback"></span>
+            </div>
+            <div class="form-section">
+                <label class="section-label" class="register-term" for="terminos">
+                    Acepto Términos y Condiciones
+                    <input type="checkbox" name="userTerms" id="terminos" required>
+                </label>
+            </div>
+            <div class="button-section">
+                <button class="clear-button" type="reset">Limpiar</button>
+                <button class="submit-button" type="submit">Crear</button>
+            </div>
+        </form>
+    </main>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer')  %> 
+    
+</body>
+</html>

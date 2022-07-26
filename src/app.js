@@ -14,6 +14,8 @@ const mainRoutes = require('./routes/mainRoutes');
 
 const productRoutes = require('./routes/productRoutes')
 
+const userRoutes = require('./routes/userRoutes');
+
 /*SETTING*/
 
 app.set('view engine', 'ejs');
@@ -33,6 +35,8 @@ app.use(methodOverride("_method"));
 app.use('/', mainRoutes);
 
 app.use('/productos', productRoutes);
+
+app.use('/usuarios', userRoutes)
 
 app.listen(port, () => console.log(`servidor funcionando en el puerto ${port}`));
 
