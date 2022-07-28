@@ -7,23 +7,19 @@
         <i class="fa-solid fa-magnifying-glass"></i>
     </div>
 
-    <form id="buscador">
+    <form action="/productos" method="GET" id="buscador">
 
-        <label for="buscador-text-input">
-            <input  id="search-input" type="text" name="buscador-text-input" value="buscar">
-        </label>
-        
-        <label for="buscador-button">
-            <input class="buscador" type="submit">
+        <input  id="search-input" type="text" name="buscador-text-input" value="buscar">
+        <button class="buscador" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
-        </label>
-        
+        </button>
+
     </form>
 
     <div class="signup-login">
-        <a href="/register" >Sign up</a>
+        <a href="/register" >Registro</a>
         <span>|</span>
-        <a href="/login" >Log in</a>
+        <a href="/login" >Ingresar</a>
     </div>
 
     <div class="hamburger">
