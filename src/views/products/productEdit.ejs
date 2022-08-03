@@ -16,7 +16,7 @@
     <main class="crud-main">
         <h2>Editar producto</h2>
 
-        <form class="crud-form" action="/productos/editar/<%= product.id %>?_method=PUT" method="POST">
+        <form class="crud-form" action="/productos/editar/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="form-section">
                 <label class="section-label" for="id">ID: </label>
                 <input type="number" name="id" id="id" value="<%= product.id %>" required>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-section">
                 <label class="section-label" for="image">Adjunte una imagen: </label>
-                <input type="file" name="image" id="image" accept=".jpg, .png" value="<%= product.image %>">
+                <input type="file" name="image" id="image" accept=".jpg, .png" value="<%= product.image[0] %>" multiple>
             </div>
             <div class="form-section">
                 <label class="section-label" for="price">Precio: </label>

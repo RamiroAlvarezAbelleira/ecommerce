@@ -1,18 +1,12 @@
 const fs = require('fs');
-const path = require('path');
+const jsonDB = require('../model/jsonDatabase');
+const productModel = jsonDB('bicisMtb');
 
 
 const controlador = {
 
     index : (req, res) => {
-        const bicisMtbJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
-        let bicisMtb
-        if (bicisMtbJSON == "") {
-            bicisMtb = [];
-        }
-        else {
-            bicisMtb = JSON.parse(bicisMtbJSON);
-        }
+        const bicisMtb = productModel.readFile();
         
         res.render('main/index', {
             bicisMtb: bicisMtb

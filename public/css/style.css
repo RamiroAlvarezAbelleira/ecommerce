@@ -476,6 +476,7 @@ main.product-detail-main article.product-detail div.details p {
 
 footer {
     background-color: rgb(213, 213, 213);
+    border-top: 3px solid rgb(255, 127, 39);
 }
 
 section.footer-benefits {
@@ -494,6 +495,10 @@ section.footer-benefits div i {
     font-size: 27px;
 }
 
+section.footer-benefits div p {
+    color: grey;
+}
+
 section.social-media {
     display: flex;
     justify-content: center;
@@ -501,10 +506,13 @@ section.social-media {
     height: 25vw;
 }
 
+section.social-media a {
+    text-align: center;
+}
+
 section.social-media i {
     font-size: 8vw;
     color: rgb(138, 138, 138);
-    margin: 0 5vw;
 }
 
 section.footer-contact-nav div.contact h4 {
@@ -749,17 +757,18 @@ section div.copyrights p {
     }
 
     #buscador {
-        margin-top: 0.5vw;
-        width: 40vw;
+        margin-top: 1.1vw;
+        width: 60vw;
     }
 
     #buscador input {
-        padding: 8px;
+        padding: 4px;
         padding-left: 12px;
+        width: 95%;
     }
 
     #buscador button {
-        padding: 8px 14px;
+        padding: 4px 14px;
     }
 
     .signup-login {
@@ -790,6 +799,11 @@ section div.copyrights p {
     
     section a {
         width: 22%;
+        transition: all 0.3s;
+    }
+
+    section a:hover {
+        width: 23%;
     }
 
     section article {
@@ -797,9 +811,110 @@ section div.copyrights p {
         min-height: 23vw;
         margin-left: 10px;
         box-shadow: 0 0 5px grey;
+        transition: all 0.3s;
+    }
+
+    section article:hover {
+        min-height: 23.5vw;
+        box-shadow: 0 0 15px rgb(95, 95, 95);
+
     }
 
     section article figure.img-container {
         min-height: 14vw;
+    }
+
+    /*FOOTER*/
+
+    section.footer-benefits {
+        margin: 20px 16vw 0 16vw;
+    }
+
+    section.footer-benefits div {
+        margin-top: 30px; 
+    }
+
+    section.social-media {
+        height: 10vw;
+    }
+
+    section.social-media a {
+        width: 10%;
+    }
+
+    section.social-media i {
+        font-size: 2.5vw;
+    }
+
+    section.footer-contact-nav {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 80vw;
+        margin: 0 auto;
+        background-color: #262626;
+        padding: 20px 0;
+        border-radius: 10px;
+        border-bottom: 2px solid rgb(255, 127, 39);
+        border-top: 2px solid rgb(255, 127, 39);
+    }
+
+    section.footer-contact-nav div.contact {
+        width: 30%;
+        margin: 0
+    }
+
+    section.footer-contact-nav div.contact h4 {
+        color: #ffffff;
+    }
+
+    section.footer-contact-nav div.contact p {
+        color: #ffffff;
+    }
+
+    section.footer-contact-nav div.footer-nav {
+        width: 30%;
+    }
+
+    section.footer-contact-nav div.acount {
+        width: 30%;
+    }
+
+    section.footer-contact-nav div.footer-nav h4 {
+        margin: 0 0 0 20px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    section.footer-contact-nav div.acount h4 {
+        margin: 0 48px 0 0;
+        text-align: end;
+        color: #ffffff;
+    }
+
+    section.footer-contact-nav div.footer-nav div.links {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    section.footer-contact-nav div.acount div.links {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        margin: 0;
+        padding: 5px 10px 5px 10px;
+        
+    }
+
+    section.footer-contact-nav div.acount div.links a {
+        width: 108px;
+        color: #ffffff;
+    }
+
+    section.footer-contact-nav div.footer-nav div.links a {
+        color: #ffffff;
     }
 }

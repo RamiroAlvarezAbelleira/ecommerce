@@ -1,6 +1,7 @@
 const fs = require('fs');
 const jsonDB = require('../model/jsonDatabase');
 const productModel = jsonDB('bicisMtb');
+const path = require('path');
 
 const controlador = {
 
@@ -11,8 +12,7 @@ const controlador = {
 
     productDetail : (req, res) => {
         let id = Number(req.params.id);
-        let productsJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
-        let products = JSON.parse(productsJSON);
+        let products = productModel.readFile();
         let product = products.find(producto => producto.id == id);
 
         res.render('products/productDetail', {product});
@@ -25,47 +25,19 @@ const controlador = {
 
     create : (req, res) => {
         
-        let articulo = {
-            id: req.body.id,
-            product: req.body.product,
-            type: req.body.type,
-            description: req.body.description,
-            image: req.body.image,
-            price: req.body.price,
-            discount: req.body.discount,
-            brand: req.body.brand,
-            model: req.body.model,
-            size: req.body.size,
-            color: req.body.color,
-            rolled: req.body.rolled,
-            frame: req.body.frame,
-            shifter: req.body.shifter,
-            brakes: req.body.brakes,
-            suspention: req.body.suspention,
-            tires: req.body.tires,
-            info: req.body.info
+        let articulo = req.body
+        let imagenes = [];
+        for (let i = 0; i < req.files.length; i++) {
+            imagenes.push(req.files[i].filename)
         }
-        let bicisMtbJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
-        let bicisMtb
-        if (bicisMtbJSON == "") {
-            bicisMtb = [];
-        }
-        else {
-            bicisMtb = JSON.parse(bicisMtbJSON);
-        }
-
-        
-        bicisMtb.push(articulo);
-        bicisMtbNewJSON = JSON.stringify(bicisMtb);
-        fs.writeFileSync('database/bicisMtb.json', bicisMtbNewJSON);
-
-        res.redirect('/productos/crear');
+        articulo.image = imagenes.length > 0 ? imagenes : ['default-product.jpg']
+        productModel.create(articulo);
+        res.redirect('/productos');
     },
 
     productEditForm: (req, res) => {
         let id = Number(req.params.id);
-        let productsJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
-        let products = JSON.parse(productsJSON);
+        let products = productModel.readFile();
         let product = products.find(producto => producto.id == id);
 
         res.render('products/productEdit', {product});
@@ -73,47 +45,25 @@ const controlador = {
 
     edit: (req, res) => {
         let id = Number(req.params.id);
-        let productsJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
-        let products = JSON.parse(productsJSON);
-        products.forEach((producto) => {
-            if(producto.id == id) {
-                producto.id = req.body.id;
-                producto.product = req.body.product;
-                producto.type = req.body.type;
-                producto.description = req.body.description;
-                producto.image = req.body.image;
-                producto.price = req.body.price;
-                producto.discount = req.body.discount;
-                producto.brand = req.body.brand;
-                producto.model = req.body.model;
-                producto.size = req.body.size;
-                producto.color = req.body.color;
-                producto.rolled = req.body.rolled;
-                producto.frame = req.body.frame;
-                producto.shifter = req.body.shifter;
-                producto.brakes = req.body.brakes;
-                producto.suspention = req.body.suspention;
-                producto.tires = req.body.tires;
-                producto.info = req.body.info;
-            }
-        });
-        newProductsJSON = JSON.stringify(products);
-        fs.writeFileSync('database/bicisMtb.json', newProductsJSON);
+        let product = productModel.find(id);
+        let updatedProduct = req.body;
+        let imagenes = [];
+        console.log(req.files);
+        for (let i = 0; i < req.files.length; i++) {
+            imagenes.push(req.files[i].filename)
+        }
+        updatedProduct.image = imagenes.length > 0 ? imagenes : product.image
+        productModel.update(updatedProduct)
 
         res.redirect(`/productos/detalle/${id}`);
     },
 
     delete: (req, res) => {
         let id = Number(req.params.id);
-        let productsJSON = fs.readFileSync('database/bicisMtb.json', {encoding: 'utf-8'});
-        let products = JSON.parse(productsJSON);
-        for (let i = 0; i < products.length; i++) {
-            if(products[i].id == id) {
-                products.splice(i);
-            }
-        }
-        let newProductsJSON = JSON.stringify(products);
-        fs.writeFileSync('database/bicisMtb.json', newProductsJSON)
+        let product = productModel.find(id);
+        let pathToImage = path.join(__dirname, '../../public/images/products/'+ product.image[0]);
+        fs.unlinkSync( pathToImage );
+        productModel.delete(id);
         res.redirect('/');
     }
 }

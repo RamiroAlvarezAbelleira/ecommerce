@@ -16,7 +16,7 @@
     <main class="crud-main">
         <h2>Crear producto</h2>
 
-        <form class="crud-form" action="/productos/Crear" method="POST">
+        <form class="crud-form" action="/productos/Crear" method="POST" enctype="multipart/form-data">
             <div class="form-section">
                 <label class="section-label" for="id">ID: </label>
                 <input type="number" name="id" id="id" required>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-section">
                 <label class="section-label" for="image">Adjunte una imagen: </label>
-                <input type="file" name="image" id="image">
+                <input type="file" name="image" id="image" multiple>
             </div>
             <div class="form-section">
                 <label class="section-label" for="price">Precio: </label>
