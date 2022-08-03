@@ -14,11 +14,11 @@
     <%- include ('../partials/nav') %> 
 
     <main>
+        
+        <h2 class="products">Todos los productos</h2>
 
-        <section id="destacados">
+        <section class="article-container" id="destacados">
             
-            <h2 class="products">Todos los productos</h2>
-
             <% products.forEach((bici) => { %> 
 
                 <a href="/productos/detalle/<%= bici.id %>"><article>
@@ -26,7 +26,7 @@
                     <p class="article-discount"><%= bici.discount %>% OFF</p>
                     <% } %> 
                     <figure class="img-container">
-                        <img src="\images\<%= bici.image %>"  alt="imagen articulo">
+                        <img src="\images\products\<%= bici.image[0] %>"  alt="imagen articulo">
                     </figure>
                     <p class="article-name"><%= bici.description %> </p>
                     <p class="article-price">$ <%= bici.price %> </p>

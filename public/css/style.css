@@ -336,6 +336,16 @@ div.form-section input {
     background-color: rgb(240, 240, 240);
 }
 
+div.form-section input.is-invalid {
+    border: 1px solid red;
+}
+
+div.form-section div.feedback {
+    font-size: 12px;
+    color: red;
+    margin-left: 3vw;
+}
+
 label.radio-label {
     font-size: 20px;
     margin: 2vw;
