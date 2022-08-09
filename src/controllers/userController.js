@@ -1,6 +1,7 @@
 const jsonDB = require('../model/jsonDatabase');
 const userModel = jsonDB('users');
 const { validationResult } = require('express-validator');
+const bcryptjs = require('bcryptjs');
 
 const controlador = {
 
@@ -22,7 +23,11 @@ const controlador = {
             });
         }
         else {
-            let user = req.body;
+            let password = req.body.password;
+            let user = {
+                ...req.body,
+                password: bcryptjs.hashSync(password)
+            }
             delete user['user-confirm-password']
             delete user.userTerms
             let imagenes = [];
