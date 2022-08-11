@@ -111,6 +111,13 @@ const modelController = function (name) {
             return elementFound;
         },
 
+        findEmail: function(text){
+            let rows = this.all();
+    
+            let elementFound = rows.find(element => element.email == text);
+            return elementFound;
+        },
+
         findAllByField: function(text){
             let rows = this.all();
             let allElementsFound = rows.filter(element => element.estado == text);

@@ -12,9 +12,13 @@ const port = 3000;
 
 const mainRoutes = require('./routes/mainRoutes');
 
-const productRoutes = require('./routes/productRoutes')
+const productRoutes = require('./routes/productRoutes');
 
 const userRoutes = require('./routes/userRoutes');
+
+const session = require('express-session');
+
+const loggedUserMW = require('./middleware/loggedUserMW');
 
 /*SETTING*/
 
@@ -29,6 +33,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(methodOverride("_method"));
+
+app.use(session({
+    secret: 'shhh',
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(loggedUserMW);
 
 /*RUTAS*/
 

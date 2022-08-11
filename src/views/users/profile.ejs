@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--HEAD-->
+    
+    <%- include ('../partials/head') %>  
+
+<body>
+    <!--HEADER-->
+
+    <%- include ('../partials/header') %> 
+
+    <!--NAV-->
+
+    <%- include ('../partials/nav') %> 
+
+    <main class="product-detail-main">
+        <article class="product-detail">
+                <div class="img-container">
+                    <img src="\images\users\default-user.png" alt="profile image">
+                </div>
+                <div class="right-container">
+                    <h3><%= user.firstname %></h3>
+                    <h6><%= user.lastname %></h6>
+                    <h5><%= user.email %></h5>
+                </div>
+                <a href="/usuarios/logout">logout</a>      
+        </article>
+    </main>
+
+    <!--FOOTER-->
+
+    <%- include('../partials/footer')  %> 
+    
+</body>
+</html>

@@ -16,16 +16,25 @@
     <main class="crud-main">
         <h2>Ingresar</h2>
 
-        <form class="crud-form" action="/usuarios/" method="get">
+        <form class="crud-form" action="/usuarios/login" method="POST">
             <div class="form-section">
                 <label for="email">Email:</label>
-                <input type="email" name="email" placeholder="johndow@mail.com" required id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                <span class="feedback"></span>
+                <input type="email" name="email" placeholder="johndow@mail.com" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                <% if (locals.errors && errors.email && errors.password) { %>
+                    <div class="feedback">
+                        <%= errors.email.msg %> 
+                    </div>
+                <% } %>
+                <% if (locals.errors && errors.password && (!errors.email)) { %>
+                    <div class="feedback">
+                        <%= errors.password.msg %> 
+                    </div>
+                <% } %>
             </div>
             <div class="form-section">
                 <label for="password">Password:</label>
-                <input type="password" name="password" placeholder="Password" required id="password" minLength="8">
-                <span class="feedback"></span>
+                <input type="password" name="password" placeholder="Password" id="password" minLength="8">
+                
             </div>
             <div class="button-section">
                 <button class="submit-button" type="submit">Ingresar</button>

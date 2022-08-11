@@ -124,7 +124,7 @@
   "lastname": "Alvarez Abelleira",
   "birthdate": "1987-01-25",
   "email": "alvabelleira1997@gmail.com",
-  "password": "12345678",
+  "password": "$2a$10$ixjDjOUA3q296HxrLrZJeOnbQNq2re5yG2WHxxTGP3ohvbf/eIbrq",
   "phonenumber": "01141684961",
   "image": [
    "default-user.png"

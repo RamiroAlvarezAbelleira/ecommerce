@@ -1,15 +1,23 @@
 const { body } = require('express-validator');
 const path = require('path');
+const jsonDB = require('../model/jsonDatabase');
+const userModel = jsonDB('users');
 
 const validations = [
     body('firstname').notEmpty().withMessage('Debe ingresar un nombre'),
     body('lastname').notEmpty().withMessage('Debe ingresar un apellido'),
     body('birthdate').notEmpty().withMessage('Debe ingresar su fecha de nacimiento'),
-    body('email').notEmpty().withMessage('Debe ingresar un email'),
+    body('email').notEmpty().withMessage('Debe ingresar un email').bail()
+    .custom((value, { req }) => {
+        let itExists = userModel.findEmail(value);
+        console.log(itExists)
+        if(itExists != undefined) {
+            throw new Error('este mail se encuentra registrado');
+        }
+        return true;
+    }),
     body('password').notEmpty().withMessage('Debe ingresar una contraseña').bail()
     .custom((value, { req }) => {
-        console.log(req.body.password)
-        console.log(req.body['user-confirm-password'])
         if(value != req.body['user-confirm-password']) {
             throw new Error('las contraseñas deben coincidir')
         }

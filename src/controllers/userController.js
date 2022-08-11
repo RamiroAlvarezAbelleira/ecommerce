@@ -5,8 +5,23 @@ const bcryptjs = require('bcryptjs');
 
 const controlador = {
 
-    login: (req, res) => {
+    loginForm: (req, res) => {
         res.render('users/login');
+    },
+
+    login: (req, res) => {
+        const resultValidation = validationResult(req);
+        if(resultValidation.errors.length > 0) {
+            res.render('users/login', {
+                errors : resultValidation.mapped(),
+            });
+        } else {
+            let user = userModel.findEmail(req.body.email);
+            delete user.password;
+            req.session.userLogged = user;
+            res.redirect('/usuarios/profile')
+        }
+        
     },
 
     registerForm: (req, res) => {
@@ -26,7 +41,7 @@ const controlador = {
             let password = req.body.password;
             let user = {
                 ...req.body,
-                password: bcryptjs.hashSync(password)
+                password: bcryptjs.hashSync(password, 10)
             }
             delete user['user-confirm-password']
             delete user.userTerms
@@ -37,8 +52,19 @@ const controlador = {
             user.image = imagenes.length > 0 ? imagenes : ['default-user.png'];
             userModel.create(user);
 
-            res.redirect('/');
+            res.redirect('/usuarios/login');
             }
+    },
+
+    profile: (req, res) => {
+        res.render('users/profile', {
+            user: req.session.userLogged
+        });
+    },
+
+    logout: (req, res) => {
+        req.session.destroy()
+        res.redirect('/');
     }
 }
 

@@ -42,8 +42,14 @@
         <div class="acount">
             <h4>Cuenta</h4>
             <div class="links">
-                <a href="#">Crear cuenta</a>
-                <a href="#">Iniciar sesion</a>
+                <% if (locals.isLogged) { %>
+                    <a href="/usuarios/profile">Perfil</a>
+                    <a href="/usuarios/logout">Cerrar sesion</a>
+                <% } else { %>
+                    <a href="/usuarios/register">Crear cuenta</a>
+                    <a href="/usuarios/login">Iniciar sesion</a>
+                <% } %>
+                
             </div>
         </div>
     </section>
