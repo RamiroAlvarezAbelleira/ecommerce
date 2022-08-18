@@ -10,7 +10,6 @@ const validations = [
     body('email').notEmpty().withMessage('Debe ingresar un email').bail()
     .custom((value, { req }) => {
         let itExists = userModel.findEmail(value);
-        console.log(itExists)
         if(itExists != undefined) {
             throw new Error('este mail se encuentra registrado');
         }

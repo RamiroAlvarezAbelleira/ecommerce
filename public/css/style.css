@@ -515,7 +515,9 @@ section.footer-benefits div p {
 
 section.social-media {
     display: flex;
-    justify-content: center;
+    width: 40vw;
+    margin: auto;
+    justify-content: space-between;
     align-items: center;
     height: 25vw;
 }
@@ -527,6 +529,21 @@ section.social-media a {
 section.social-media i {
     font-size: 8vw;
     color: rgb(138, 138, 138);
+}
+
+section.social-media i#instagram:hover {
+    color: #ee569a;
+    text-shadow: 0 0 5px #f96dac;
+}
+
+section.social-media i#facebook:hover {
+    color: #3B5998;
+    text-shadow: 0 0 5px #4b69a9;
+}
+
+section.social-media i#twitter:hover {
+    color: #00ACEE;
+    text-shadow: 0 0 5px #3ec0f3;
 }
 
 section.footer-contact-nav div.contact h4 {
@@ -734,7 +751,6 @@ section div.copyrights p {
 
     section.footer-benefits {
         justify-content: space-around;
-        margin-top: 20px;
     }
 
     section.footer-benefits div {
@@ -752,11 +768,15 @@ section div.copyrights p {
     }
 
     section.social-media {
-        height: 20vw;
+        height: 175px;
+        width: 40vw;
+        margin:auto;
+        justify-content: space-between;
+        
     }
 
     section.social-media i {
-        font-size: 5vw;
+        font-size: 45px;
     }
 
     section.footer-contact-nav div.contact h4 {
