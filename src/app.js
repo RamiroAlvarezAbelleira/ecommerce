@@ -50,7 +50,7 @@ app.use('/productos', productRoutes);
 
 app.use('/usuarios', userRoutes)
 
-app.listen(port, () => console.log(`servidor funcionando en el puerto ${port}`));
+app.listen(process.env.PORT ||port, () => console.log(`servidor funcionando en el puerto ${port}`));
 
 
 
