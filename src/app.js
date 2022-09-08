@@ -4,11 +4,11 @@ const methodOverride = require('method-override');
 const publicPath = path.join(__dirname, '../public');
 const app = express();
 const port = 8080;
-const mainRoutes = require('./src/routes/mainRoutes');
-const productRoutes = require('./src/routes/productRoutes');
-const userRoutes = require('./src/routes/userRoutes');
+const mainRoutes = require('./routes/mainRoutes');
+const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
 const session = require('express-session');
-const loggedUserMW = require('./src/middleware/loggedUserMW');
+const loggedUserMW = require('./middleware/loggedUserMW');
 
 /*SETTING*/
 
