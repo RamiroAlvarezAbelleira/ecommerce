@@ -3,7 +3,8 @@ const path = require('path');
 const methodOverride = require('method-override');
 const publicPath = path.join(__dirname, '../public');
 const app = express();
-const port = 8080;
+const cookies = require('cookie-parser')
+const port = 3000;
 const mainRoutes = require('./routes/mainRoutes');
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -23,6 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(cookies());
 app.use(loggedUserMW);
 
 /*RUTAS*/
