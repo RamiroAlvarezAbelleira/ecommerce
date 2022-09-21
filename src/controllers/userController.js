@@ -1,5 +1,6 @@
 const jsonDB = require('../model/jsonDatabase');
-const userModel = jsonDB('users');
+const { User } = require('../database/models');
+const { Op } = require('sequelize');
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
 
@@ -9,18 +10,29 @@ const controlador = {
         res.render('users/login');
     },
 
-    login: (req, res) => {
+    login: async (req, res) => {
         const resultValidation = validationResult(req);
-        if(resultValidation.errors.length > 0) {
-            res.render('users/login', {
-                errors : resultValidation.mapped(),
-            });
-        } else {
-            let user = userModel.findEmail(req.body.email);
-            delete user.password;
-            req.session.userLogged = user;
-            res.redirect('/usuarios/profile')
+
+        try {
+            if(resultValidation.errors.length > 0) {
+                res.render('users/login', {
+                    errors : resultValidation.mapped(),
+                });
+            } else {
+                let user = await User.findOne({
+                    where: {
+                        email: {[Op.like]: req.body.email}
+                    }
+                });
+                delete user.password;
+                req.session.userLogged = user;
+                res.redirect('/usuarios/profile')
+            }
+        } catch (error) {
+            res.json(error.message)
         }
+
+        
         
     },
 
@@ -28,32 +40,34 @@ const controlador = {
         res.render('users/register');
     },
 
-    register: (req, res) => {
+    register: async (req, res) => {
         const resultValidation = validationResult(req);
-        if(resultValidation.errors.length > 0) {
-            const oldData = req.body
-            res.render('users/register', {
-                errors : resultValidation.mapped(),
-                oldData
-            });
-        }
-        else {
-            let password = req.body.password;
-            let user = {
-                ...req.body,
-                password: bcryptjs.hashSync(password, 10)
-            }
-            delete user['user-confirm-password']
-            delete user.userTerms
-            let imagenes = [];
-            for (let i = 0; i < req.files.length; i++) {
-                imagenes.push(req.files[i].filename)
-            }
-            user.image = imagenes.length > 0 ? imagenes : ['default-user.png'];
-            userModel.create(user);
 
-            res.redirect('/usuarios/login');
+        try {
+            if(resultValidation.errors.length > 0) {
+                const oldData = req.body
+                res.render('users/register', {
+                    errors : resultValidation.mapped(),
+                    oldData
+                });
             }
+            else {
+                let password = req.body.password;
+                let user = {
+                    ...req.body,
+                    password: bcryptjs.hashSync(password, 10),
+                    roleId: 2
+                }
+                delete user['user-confirm-password']
+                delete user.userTerms
+                user.image = req.files.length > 0 ? req.files.filename : 'default-user.png';
+                await User.create(user)
+                res.redirect('/usuarios/login');
+                }
+        } catch (error) {
+            res.json(error.message)
+        }
+        
     },
 
     profile: (req, res) => {

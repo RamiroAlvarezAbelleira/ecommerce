@@ -11,6 +11,8 @@
         <% } %>
         
         <li class="nav-section"><a class="nav-link5" href="/contacto" class="nav-link">CONTACTO</a></li>
-        <li class="nav-section"><a class="nav-link6" href="/productos/crear" class="nav-link">ADMIN</a></li>
+        <% if (locals.isLogged && locals.admin) { %>
+            <li class="nav-section"><a class="nav-link6" href="/productos/crear" class="nav-link">ADMIN</a></li>
+        <% } %>
     </ul>
 </nav>

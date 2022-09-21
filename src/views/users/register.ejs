@@ -23,14 +23,14 @@
                 <input type="file" name="image" id="image" accept=".jpg, .png" multiple>
             </div>
             <div class="form-section">
-                <label class="section-label" for="firstname">Nombre: </label>
+                <label class="section-label" for="firstName">Nombre: </label>
                 <input 
                 type="text" 
-                name="firstname" 
+                name="firstName" 
                 id="firstname" 
                 placeholder="Juan" 
-                class="<%= locals.errors && errors.firstname ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.firstname : null %>" > 
+                class="<%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
+                value="<%= locals.oldData ? oldData.firstName : null %>" > 
                 <% if (locals.errors && errors.firstname) { %>
                     <div class="feedback">
                         <%= errors.firstname.msg %> 
@@ -38,14 +38,14 @@
                 <% } %>
             </div>
             <div class="form-section">
-                <label class="section-label" for="lastname">Apellido/s: </label>
+                <label class="section-label" for="lastName">Apellido/s: </label>
                 <input 
                 type="text" 
-                name="lastname" 
+                name="lastName" 
                 id="lastname" 
                 placeholder="Perez" 
-                class="<%= locals.errors && errors.lastname ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.lastname : null %>">
+                class="<%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
+                value="<%= locals.oldData ? oldData.lastName : null %>">
                 <% if (locals.errors && errors.lastname) { %>
                     <div class="feedback">
                         <%= errors.lastname.msg %> 

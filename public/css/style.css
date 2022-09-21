@@ -861,6 +861,10 @@ section div.copyrights p {
         color: #ffffff;
         font-size: 1.2vw;
     }
+    .signup-login span {
+        padding: 0 3px 0 3px;
+        font-size: 1.3vw;
+    }
 
     .header-sections {
         font-size: 1.2vw;

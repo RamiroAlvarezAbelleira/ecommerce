@@ -4,8 +4,8 @@ const jsonDB = require('../model/jsonDatabase');
 const userModel = jsonDB('users');
 
 const validations = [
-    body('firstname').notEmpty().withMessage('Debe ingresar un nombre'),
-    body('lastname').notEmpty().withMessage('Debe ingresar un apellido'),
+    body('firstName').notEmpty().withMessage('Debe ingresar un nombre'),
+    body('lastName').notEmpty().withMessage('Debe ingresar un apellido'),
     body('birthdate').notEmpty().withMessage('Debe ingresar su fecha de nacimiento'),
     body('email').notEmpty().withMessage('Debe ingresar un email').bail()
     .custom((value, { req }) => {

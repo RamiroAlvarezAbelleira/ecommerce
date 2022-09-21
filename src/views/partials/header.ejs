@@ -19,7 +19,9 @@
             <li class="header-section"><a href="/" >HOME</a></li>
             <li class="header-section"><a href="/productos" >PRODUCTOS</a></li>
             <li class="header-section"><a href="/contacto" >CONTACTO</a></li>
-            <li class="header-section"><a href="/productos/crear" >ADMIN</a></li>
+            <% if (locals.isLogged && locals.admin) { %>
+                <li class="header-section"><a href="/productos/crear" >ADMIN</a></li>
+            <% } %>
         </ul>
     </div>
     
