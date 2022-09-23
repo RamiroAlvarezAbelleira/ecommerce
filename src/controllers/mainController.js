@@ -1,16 +1,20 @@
-const fs = require('fs');
-const jsonDB = require('../model/jsonDatabase');
-const productModel = jsonDB('bicisMtb');
+const db = require('../database/models');
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 
 const controlador = {
 
-    index : (req, res) => {
-        const bicisMtb = productModel.readFile();
+    index: async (req, res) => {
+        try {
+            const products = await db.Product.findAll({
+                include: [db.Image]
+            });
         
-        res.render('main/index', {
-            bicisMtb: bicisMtb
-        });
+            res.render('main/index', {products, toThousand});
+        } catch (error) {
+            res.json(error.message)
+        }
+        
     }
 };
 

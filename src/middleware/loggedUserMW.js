@@ -5,6 +5,7 @@ function loggedUserMW(req, res, next) {
     if (req.session.userLogged) {
         res.locals.isLogged = true;
         res.locals.admin = req.session.userLogged.roleId == 1 ? true : false;
+        res.locals.userLogged = req.session.userLogged
     }
     next()
 }

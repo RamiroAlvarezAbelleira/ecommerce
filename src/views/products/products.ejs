@@ -25,11 +25,18 @@
                     <% if(bici.discount > 0) { %> 
                     <p class="article-discount"><%= bici.discount %>% OFF</p>
                     <% } %> 
-                    <figure class="img-container">
-                        <img src="\images\products\<%= bici.image[0] %>"  alt="imagen articulo">
-                    </figure>
+                    <% if(bici.Images[0]) { %>
+                        <figure class="img-container">
+                            <img src="\images\products\<%= bici.Images[0].fileName %>"  alt="imagen articulo">
+                        </figure>
+                    <% } else { %>
+                        <figure class="img-container">
+                            <img src="\images\products\default-product.jpg"  alt="imagen articulo">
+                        </figure>
+                    <% } %>
                     <p class="article-name"><%= bici.description %> </p>
-                    <p class="article-price">$ <%= bici.price %> </p>
+                    <% let priceTH = toThousand(bici.price) %>
+                    <p class="article-price">$ <%= priceTH %> </p>
                 </article></a>
         
                 <% }) %>

@@ -41,17 +41,18 @@
 
         <section class="article-container" id="destacados">
             
-            <% bicisMtb.forEach((bici) => { %> 
+            <% products.forEach((product) => { %> 
 
-                <a href="/productos/detalle/<%= bici.id %>"><article>
-                    <% if(bici.discount > 0) { %> 
-                    <p class="article-discount"><%= bici.discount %>% OFF</p>
+                <a href="/productos/detalle/<%= product.id %>"><article>
+                    <% if(product.discount > 0) { %> 
+                    <p class="article-discount"><%= product.discount %>% OFF</p>
                     <% } %> 
                     <figure class="img-container">
-                        <img src="\images\products\<%= bici.image[0] %>"  alt="imagen articulo">
+                        <img src="\images\products\<%= product.Images[0].fileName %>"  alt="imagen articulo">
                     </figure>
-                    <p class="article-name"><%= bici.description %> </p>
-                    <p class="article-price">$ <%= bici.price %> </p>
+                    <p class="article-name"><%= product.description %> </p>
+                    <% let priceTH = toThousand(product.price) %>
+                    <p class="article-price">$ <%= priceTH %> </p>
                 </article></a>
         
                 <% }) %>

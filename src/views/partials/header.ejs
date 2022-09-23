@@ -27,12 +27,12 @@
     
     <% if (locals.isLogged) { %>
         <div class="signup-login">
-            <a href="/usuarios/profile" >Perfil</a>
+            <a href="/usuarios/profile" ><%=locals.userLogged.firstName%></a>
             <span>|</span>
             <a href="/usuarios/logout" >Cerrar sesion</a>
         </div>
         <div class="signup-login-tablet">
-            <a href="/usuarios/profile" ><i class="fa-solid fa-square-user"></i></a>
+            <a href="/usuarios/profile" ><i class="fa-regular fa-address-card"></i></a>
         </div>
     <% } else { %>
         <div class="signup-login">

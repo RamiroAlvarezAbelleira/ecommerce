@@ -18,81 +18,178 @@
 
         <form class="crud-form" action="/productos/Crear" method="POST" enctype="multipart/form-data">
             <div class="form-section">
-                <label class="section-label" for="id">ID: </label>
-                <input type="number" name="id" id="id" required>
-            </div>
-            <div class="form-section">
                 <label class="section-label">Producto: </label>
-                <label class="radio-label">Bicicleta
-                    <input type="radio" name="product" value="bicicleta">
-                </label>
-                <label class="radio-label">Accesorio
-                    <input type="radio" name="product" value="accesorio">
-                </label>
+                <select name="categoryId">
+                    <option value="" disabled selected>- Seleccione el Producto - </option>
+                    <% if (categories) {%> 
+                    <% categories.forEach(category => { %> 
+                        <option value="<%=category.id%>" 
+                            <%= locals.oldData && oldData.categoryId == category.id ? 'selected' : null %>
+                            >
+                            <%=category.name%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="type">Tipo de articulo: </label>
-                <input type="text" name="type" id="type" placeholder="mtb, ruta, zapatillas..." required>
+                <label class="section-label" for="typeId">Tipo de articulo: </label>
+                <select name="typeId">
+                    <option value="" disabled selected>- Seleccione el Tipo - </option>
+                    <% if (types) {%> 
+                    <% types.forEach(type => { %> 
+                        <option value="<%=type.id%>" 
+                            <%= locals.oldData && oldData.typeId == type.id ? 'selected' : null %>
+                            >
+                            <%=type.name%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
                 <label class="section-label" for="description">Descripcion: </label>
-                <input type="text" name="description" id="description" required>
+                <input type="text" name="description" id="description" required value="<%= locals.oldData && oldData.description %>">
             </div>
             <div class="form-section">
                 <label class="section-label" for="image">Adjunte una imagen: </label>
-                <input type="file" name="image" id="image" multiple>
+                <input class="file" type="file" name="image" id="product-image"  accept=".jpg, .png" multiple>
             </div>
             <div class="form-section">
                 <label class="section-label" for="price">Precio: </label>
-                <input type="number" name="price" id="price" required>
+                <input type="number" name="price" id="price" required value="<%= locals.oldData && oldData.price %>" />
             </div>
             <div class="form-section">
                 <label class="section-label" for="discount">Descuento: </label>
-                <input type="number" name="discount" id="discount">
+                <input type="number" name="discount" id="discount" placeholder="0" value="<%= locals.oldData && oldData.discount %>"/>
             </div>
             <div class="form-section">
-                <label class="section-label" for="brand">Marca: </label>
-                <input type="text" name="brand" id="brand">
+                <label class="section-label" for="brandId">Marca: </label>
+                <select name="brandId">
+                    <option value="" disabled selected>- Seleccione la Marca - </option>
+                    <% if (brands) {%> 
+                    <% brands.forEach(brand => { %> 
+                        <option value="<%=brand.id%>" 
+                            <%= locals.oldData && oldData.brandId == brand.id ? 'selected' : null %>
+                            >
+                            <%=brand.name%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
                 <label class="section-label" for="model">Modelo: </label>
-                <input type="text" name="model" id="model">
+                <input type="text" name="model" id="model" value="<%= locals.oldData && oldData.model %>">
             </div>
             <div class="form-section">
-                <label class="section-label" for="size">Talle: </label>
-                <input type="text" name="size" id="size" placeholder="M, S, L...">
+                <label class="section-label" for="sizeId">Talle: </label>
+                <select name="sizeId">
+                    <option value="" disabled selected>- Seleccione el Talle - </option>
+                    <% if (sizes) {%> 
+                    <% sizes.forEach(size => { %> 
+                        <option value="<%=size.id%>" 
+                            <%= locals.oldData && oldData.sizeId == size.id ? 'selected' : null %>
+                            >
+                            <%=size.name%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="color">Color: </label>
-                <input type="text" name="color" id="color">
+                <label class="section-label" for="colorId">Color: </label>
+                <select name="colorId">
+                    <option value="" disabled selected>- Seleccione el Color - </option>
+                    <% if (colors) {%> 
+                    <% colors.forEach(color => { %> 
+                        <option value="<%=color.id%>" 
+                            <%= locals.oldData && oldData.colorId == color.id ? 'selected' : null %>
+                            >
+                            <%=color.name%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="rolled">Rodado: </label>
-                <input type="number" name="rolled" id="rolled">
+                <label class="section-label" for="wheelSizeId">Rodado: </label>
+                <select name="wheelSizeId">
+                    <option value="" disabled selected>- Seleccione el Rodado - </option>
+                    <% if (wheelSizes) {%> 
+                    <% wheelSizes.forEach(size => { %> 
+                        <option value="<%=size.id%>" 
+                            <%= locals.oldData && oldData.wheelSizeId == size.id ? 'selected' : null %>
+                            >
+                            <%=size.number%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="frame">Cuadro: </label>
-                <input type="text" name="frame" id="frame">
+                <label class="section-label" for="frameId">Cuadro: </label>
+                <select name="frameId">
+                    <option value="" disabled selected>- Seleccione la Estructura - </option>
+                    <% if (frames) {%> 
+                    <% frames.forEach(frame => { %> 
+                        <option value="<%=frame.id%>" 
+                            <%= locals.oldData && oldData.frameId == frame.id ? 'selected' : null %>
+                            >
+                            <%=frame.name%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="shifter">Velocidades: </label>
-                <input type="text" name="shifter" id="shifter">
+                <label class="section-label" for="shiftId">Velocidades: </label>
+                <select name="shiftId">
+                    <option value="" disabled selected>- Seleccione la cantidad de Cambios - </option>
+                    <% if (shifts) {%> 
+                    <% shifts.forEach(shift => { %> 
+                        <option value="<%=shift.id%>" 
+                            <%= locals.oldData && oldData.shiftId == shift.id ? 'selected' : null %>
+                            >
+                            <%=shift.number%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="brakes">Frenos: </label>
-                <input type="text" name="brakes" id="brakes">
+                <label class="section-label" for="brakeId">Frenos: </label>
+                <select name="brakeId">
+                    <option value="" disabled selected>- Seleccione el tipo de Freno - </option>
+                    <% if (brakes) {%> 
+                    <% brakes.forEach(brake => { %> 
+                        <option value="<%=brake.id%>" 
+                            <%= locals.oldData && oldData.brakeId == brake.id ? 'selected' : null %>
+                            >
+                            <%=brake.type%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
-                <label class="section-label" for="suspention">Suspension: </label>
-                <input type="text" name="suspention" id="suspention">
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="tires">Cubiertas: </label>
-                <input type="text" name="tires" id="tires">
+                <label class="section-label" for="suspensionId">Suspension: </label>
+                <select name="suspensionId">
+                    <option value="" disabled selected>- Seleccione la Suspensión - </option>
+                    <% if (suspentions) {%> 
+                    <% suspentions.forEach(suspention => { %> 
+                        <option value="<%=suspention.id%>" 
+                            <%= locals.oldData && oldData.suspensionId == suspention.id ? 'selected' : null %>
+                            >
+                            <%=suspention.type%>
+                        </option>
+                    <% }); %> 
+                    <% } %> 
+                </select>
             </div>
             <div class="form-section">
                 <label class="section-label" for="info">Info: </label>
-                <input type="number" name="info" id="info">
+                <textarea name="info" id="info" cols="30" rows="10"><%= locals.oldData && oldData.info %></textarea>
             </div>
             <div class="button-section">
                 <button class="clear-button" type="reset">Limpiar</button>
