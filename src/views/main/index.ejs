@@ -46,13 +46,24 @@
                 <a href="/productos/detalle/<%= product.id %>"><article>
                     <% if(product.discount > 0) { %> 
                     <p class="article-discount"><%= product.discount %>% OFF</p>
-                    <% } %> 
+                    <% } else { %> 
+                        <p class="space"></p>
+                    <% } %>
                     <figure class="img-container">
                         <img src="\images\products\<%= product.Images[0].fileName %>"  alt="imagen articulo">
                     </figure>
                     <p class="article-name"><%= product.description %> </p>
-                    <% let priceTH = toThousand(product.price) %>
-                    <p class="article-price">$ <%= priceTH %> </p>
+                    <div class="price">
+                        <% let price = toThousand(product.price) %>
+                        <% let discountPrice = toThousand((product.price - (product.price / 100 * product.discount)).toFixed(0)) %>
+                        
+                        <% if (product.discount > 0) { %>  
+                            <p class="article-discount-price">$ <%= price %></p>
+                            <p class="article-price">$ <%= discountPrice %> </p>
+                        <% } else { %>
+                            <p class="article-price-nodisc">$ <%= price %> </p>
+                        <% } %>
+                    </div>
                 </article></a>
         
                 <% }) %>

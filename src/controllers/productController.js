@@ -1,7 +1,8 @@
 const fs = require('fs');
 const { validationResult } = require('express-validator');
 const path = require('path');
-const db = require('../database/models')
+const db = require('../database/models');
+const { Op } = require('sequelize');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controlador = {
@@ -213,7 +214,23 @@ const controlador = {
         } catch (error) {
             res.json(error.message)
         }
+    },
+
+    search: async (req, res) => {
+        try {
+            let search = req.query.search;
+            let products = await db.Product.findAll({
+                where: {
+                    description: {[Op.like]: `%${search}%`}
+                },
+                include: [db.Image]
+            });
+            res.render('products/products', {products, toThousand});
+        } catch (error) {
+            res.json(error.message)
+        }
     }
+
 }
 
 module.exports = controlador;

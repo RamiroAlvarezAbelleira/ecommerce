@@ -26,12 +26,14 @@
                 <div class="add-to-cart">
                     <a href="/carrito">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
-                <div class="edit-delete-container">
-                    <a href="/productos/editar/<%= product.id %>">Editar</a>
-                    <form action="/productos/eliminar/<%= product.id %>?_method=DELETE" method="POST">
-                        <button type="submit">Eliminar</button>
-                    </form>
-                </div>
+                <% if (locals.isLogged && locals.admin) { %>
+                    <div class="edit-delete-container">
+                        <a href="/productos/editar/<%= product.id %>">Editar</a>
+                        <form action="/productos/eliminar/<%= product.id %>?_method=DELETE" method="POST">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </div>
+                <% } %>
             </div>
             <div class="details">
                 <h4>Especificaciones</h4>

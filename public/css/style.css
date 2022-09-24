@@ -287,11 +287,36 @@ section article p.article-discount {
     top: 20px;
 }
 
+section article p.space {
+    margin-top: 8%;
+}
+
+section article div.price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
 section article p.article-price {
     font-size: 20px;
-    color: rgb(63, 63, 63);
+    color: rgb(228, 112, 35);
     margin-right: 5%;
     text-align: end;
+    font-weight: 500;
+}
+
+section article p.article-price-nodisc {
+    font-size: 20px;
+    color: rgb(228, 112, 35);
+    margin-right: 5%;
+    text-align: end;
+    font-weight: 500;
+}
+
+section article p.article-discount-price {
+    color: rgb(107, 107, 107);
+    text-decoration: line-through;
 }
 
 /*PRODUCT CREATE FORM*/
@@ -925,6 +950,26 @@ section div.copyrights p {
         min-height: 14vw;
     }
 
+    section article p.article-price {
+        font-size: 1.4vw;
+    }
+
+    section article p.article-discount-price {
+        font-size: 1.3vw;
+    }
+
+    section article p.article-discount {
+        font-size: 1.2vw;
+    }
+
+    section article p.article-name {
+        font-size: 1.4vw;
+    }
+
+    section article p.article-price-nodisc {
+        font-size: 1.4vw;
+    }
+
     /*FOOTER*/
 
     section.footer-benefits {
@@ -1017,5 +1062,27 @@ section div.copyrights p {
 
     section.footer-contact-nav div.footer-nav div.links a {
         color: #ffffff;
+    }
+}
+
+@media(min-width: 1260px) {
+    section article p.article-price {
+        font-size: 17px;
+    }
+
+    section article p.article-discount-price {
+        font-size: 17px;
+    }
+
+    section article p.article-discount {
+        font-size: 15px;
+    }
+
+    section article p.article-name {
+        font-size: 18px;
+    }
+
+    section article p.article-price-nodisc {
+        font-size: 17px;
     }
 }
