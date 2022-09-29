@@ -5,6 +5,11 @@
     font-family: 'poppins', sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: blue;
+}
+
 /*HEADER*/
 
 .buscador-y-nav {
@@ -321,7 +326,7 @@ section article p.article-discount-price {
 
 /*PRODUCT CREATE FORM*/
 
-main.crud-main {
+div.crud-main {
     margin: 10vw 5vw;
     padding: 20px 30px;
     background-color: white;
@@ -329,7 +334,7 @@ main.crud-main {
     box-shadow: 5px 5px 10px grey;
 }
 
-main.crud-main h2 {
+div.crud-main h2 {
     text-align: center;
     margin: 8vw 2vw;
     padding: 0 5px;
@@ -970,6 +975,49 @@ section div.copyrights p {
         font-size: 1.4vw;
     }
 
+    /*--------FORMS--------*/
+
+    main.form-background {
+        background-image: url('/images/grey-background.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        padding-top: 5vw;
+        padding-bottom: 6vw;
+        
+    }
+
+    div.crud-main {
+        width: 283px;
+        margin: 0px auto 0px auto;
+    }
+
+    div.crud-main h2 {
+        margin: 40px auto 60px auto;
+    }
+
+    div.crud-main.register-create-edit {
+        width: 90%;
+    }
+
+    form.crud-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.form-row-flex {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    div.form-column {
+        width: 45%;
+    }
+
+    div.button-section button {
+        height: 30px;
+        width: 100px;
+    }
+
     /*FOOTER*/
 
     section.footer-benefits {
@@ -1066,6 +1114,9 @@ section div.copyrights p {
 }
 
 @media(min-width: 1260px) {
+
+    /*------HOME AND PRODUCTS------*/
+
     section article p.article-price {
         font-size: 17px;
     }
@@ -1084,5 +1135,11 @@ section div.copyrights p {
 
     section article p.article-price-nodisc {
         font-size: 17px;
+    }
+
+    /*------FORMS------*/
+
+    div.crud-main.register-create-edit {
+        width: 65%;
     }
 }

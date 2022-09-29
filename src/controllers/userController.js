@@ -2,6 +2,8 @@ const { User } = require('../database/models');
 const { Op } = require('sequelize');
 const { validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
+const path = require('path');
+const fs = require('fs');
 
 const controlador = {
 
@@ -45,6 +47,12 @@ const controlador = {
         try {
             if(resultValidation.errors.length > 0) {
                 const oldData = req.body
+                let files = req.files;
+                if (files) {
+                    for (let i = 0; i < files.length; i++) {
+                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/' + files[i].filename))
+                    }
+                }
                 res.render('users/register', {
                     errors : resultValidation.mapped(),
                     oldData

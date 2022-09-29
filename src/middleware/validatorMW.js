@@ -1,15 +1,19 @@
 const { body } = require('express-validator');
 const path = require('path');
-const jsonDB = require('../model/jsonDatabase');
-const userModel = jsonDB('users');
+const { User } = require('../database/models');
+const { Op } = require('sequelize');
 
 const validations = [
     body('firstName').notEmpty().withMessage('Debe ingresar un nombre'),
     body('lastName').notEmpty().withMessage('Debe ingresar un apellido'),
     body('birthdate').notEmpty().withMessage('Debe ingresar su fecha de nacimiento'),
     body('email').notEmpty().withMessage('Debe ingresar un email').bail()
-    .custom((value, { req }) => {
-        let itExists = userModel.findEmail(value);
+    .custom( async (value, { req }) => {
+        let itExists = await User.findOne({
+            where: {
+                email: {[Op.like] : value}
+            }
+        });
         if(itExists != undefined) {
             throw new Error('este mail se encuentra registrado');
         }

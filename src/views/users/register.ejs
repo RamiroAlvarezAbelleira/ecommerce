@@ -12,141 +12,155 @@
     <!--NAV-->
 
     <%- include ('../partials/nav') %> 
-
-    <main class="crud-main">
-        <h2>Crea tu cuenta</h2>
-        
-        <form class="crud-form" action="/usuarios/register" method="POST" enctype="multipart/form-data">
-            <div class="form-section">
-                <i class="fa-solid fa-circle-user"></i>
-                <label class="section-label" for="image">Adjunte una imagen: </label>
-                <input type="file" name="image" id="image" accept=".jpg, .png" multiple>
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="firstName">Nombre: </label>
-                <input 
-                type="text" 
-                name="firstName" 
-                id="firstname" 
-                placeholder="Juan" 
-                class="<%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.firstName : null %>" > 
-                <% if (locals.errors && errors.firstname) { %>
-                    <div class="feedback">
-                        <%= errors.firstname.msg %> 
-                    </div>
-                <% } %>
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="lastName">Apellido/s: </label>
-                <input 
-                type="text" 
-                name="lastName" 
-                id="lastname" 
-                placeholder="Perez" 
-                class="<%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.lastName : null %>">
-                <% if (locals.errors && errors.lastname) { %>
-                    <div class="feedback">
-                        <%= errors.lastname.msg %> 
-                    </div>
-                <% } %>
-            </div>
+    <main class="form-background">
+        <div class="crud-main register-create-edit">
+            <h2>Crea tu cuenta</h2>
             
-            <div class="form-section">
-                <label class="section-label" for="date">Fecha de nacimiento:</label>
-                <input 
-                type="date" 
-                name="birthdate" 
-                value="1987-01-25"  
-                id="date" 
-                min="1900-01-01" 
-                max="2010-01-01"
-                class="<%= locals.errors && errors.birthdate ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.birthdate : null %>">
-                <% if (locals.errors && errors.birthdate) { %>
-                    <div class="feedback">
-                        <%= errors.birthdate.msg %> 
+            <form class="crud-form" action="/usuarios/register" method="POST" enctype="multipart/form-data">
+                <div class="form-row-flex">
+                    <div class="form-column">
+                        <div class="form-section">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <label class="section-label" for="image">Adjunte una imagen: </label>
+                            <input type="file" name="image" id="image" accept=".jpg, .png" multiple>
+                            <% if (locals.errors && errors.image) { %>
+                                <div class="feedback">
+                                    <%= errors.image.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" for="firstName">Nombre: </label>
+                            <input 
+                            type="text" 
+                            name="firstName" 
+                            id="firstname" 
+                            placeholder="Juan" 
+                            class="<%= locals.errors && errors.firstName ? 'is-invalid' : null %>"
+                            value="<%= locals.oldData ? oldData.firstName : null %>" > 
+                            <% if (locals.errors && errors.firstName) { %>
+                                <div class="feedback">
+                                    <%= errors.firstName.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" for="lastName">Apellido/s: </label>
+                            <input 
+                            type="text" 
+                            name="lastName" 
+                            id="lastname" 
+                            placeholder="Perez" 
+                            class="<%= locals.errors && errors.lastName ? 'is-invalid' : null %>"
+                            value="<%= locals.oldData ? oldData.lastName : null %>">
+                            <% if (locals.errors && errors.lastName) { %>
+                                <div class="feedback">
+                                    <%= errors.lastName.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" class="register-term" for="terminos">
+                                Acepto Términos y Condiciones
+                                <input type="checkbox" name="userTerms" id="terminos" >
+                            </label>
+                            <% if (locals.errors && errors.userTerms) { %>
+                                <div class="feedback">
+                                    <%= errors.userTerms.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
                     </div>
-                <% } %>
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="email">Email:</label>
-                <input 
-                type="email" 
-                name="email" 
-                placeholder="johndow@mail.com"  
-                id="email" 
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                class="<%= locals.errors && errors.email ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.email : null %>">
-                <% if (locals.errors && errors.email) { %>
-                    <div class="feedback">
-                        <%= errors.email.msg %> 
+
+                    <div class="form-column">
+                        <div class="form-section">
+                            <label class="section-label" for="date">Fecha de nacimiento:</label>
+                            <input 
+                            type="date" 
+                            name="birthdate" 
+                            value="1987-01-25"  
+                            id="date" 
+                            min="1900-01-01" 
+                            max="2010-01-01"
+                            class="<%= locals.errors && errors.birthdate ? 'is-invalid' : null %>"
+                            value="<%= locals.oldData ? oldData.birthdate : null %>">
+                            <% if (locals.errors && errors.birthdate) { %>
+                                <div class="feedback">
+                                    <%= errors.birthdate.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" for="email">Email:</label>
+                            <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="johndow@mail.com"  
+                            id="email" 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            class="<%= locals.errors && errors.email ? 'is-invalid' : null %>"
+                            value="<%= locals.oldData ? oldData.email : null %>">
+                            <% if (locals.errors && errors.email) { %>
+                                <div class="feedback">
+                                    <%= errors.email.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" for="password">Password:</label>
+                            <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Password"  
+                            id="password" 
+                            minLength="8"
+                            class="<%= locals.errors && errors.password ? 'is-invalid' : null %>">
+                            <% if (locals.errors && errors.password) { %>
+                                <div class="feedback">
+                                    <%= errors.password.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" for="confirm-password">Confirmar contraseña:</label>
+                            <input 
+                            type="password" 
+                            name="user-confirm-password" 
+                            placeholder="Repeat password"  
+                            id="confirm-password" 
+                            minLength="8"
+                            class="<%= locals.errors && errors['user-confirm-password'] ? 'is-invalid' : null %>">
+                            <% if (locals.errors && errors['user-confirm-password']) { %>
+                                <div class="feedback">
+                                    <%= errors['user-confirm-password'].msg %> 
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class="form-section">
+                            <label class="section-label" for="phone">Telefono (opcional):</label>
+                            <input 
+                            type="tel" 
+                            name="phonenumber" 
+                            placeholder="+54 911 5678 1234" 
+                            id="phone"
+                            class="<%= locals.errors && errors.phonenumber ? 'is-invalid' : null %>"
+                            value="<%= locals.oldData ? oldData.phonenumber : null %>">
+                            <% if (locals.errors && errors.phonenumber) { %>
+                                <div class="feedback">
+                                    <%= errors.phonenumber.msg %> 
+                                </div>
+                            <% } %>
+                        </div>
                     </div>
-                <% } %>
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="password">Password:</label>
-                <input 
-                type="password" 
-                name="password" 
-                placeholder="Password"  
-                id="password" 
-                minLength="8"
-                class="<%= locals.errors && errors.password ? 'is-invalid' : null %>">
-                <% if (locals.errors && errors.password) { %>
-                    <div class="feedback">
-                        <%= errors.password.msg %> 
+                </div>
+                <div class="form-row">
+                    <div class="button-section">
+                        <button class="clear-button" type="reset">Limpiar</button>
+                        <button class="submit-button" type="submit">Crear</button>
                     </div>
-                <% } %>
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="confirm-password">Confirmar contraseña:</label>
-                <input 
-                type="password" 
-                name="user-confirm-password" 
-                placeholder="Repeat password"  
-                id="confirm-password" 
-                minLength="8"
-                class="<%= locals.errors && errors['user-confirm-password'] ? 'is-invalid' : null %>">
-                <% if (locals.errors && errors['user-confirm-password']) { %>
-                    <div class="feedback">
-                        <%= errors['user-confirm-password'].msg %> 
-                    </div>
-                <% } %>
-            </div>
-            <div class="form-section">
-                <label class="section-label" for="phone">Telefono (opcional):</label>
-                <input 
-                type="tel" 
-                name="phonenumber" 
-                placeholder="+54 911 5678 1234" 
-                id="phone"
-                class="<%= locals.errors && errors.phonenumber ? 'is-invalid' : null %>"
-                value="<%= locals.oldData ? oldData.phonenumber : null %>">
-                <% if (locals.errors && errors.phonenumber) { %>
-                    <div class="feedback">
-                        <%= errors.phonenumber.msg %> 
-                    </div>
-                <% } %>
-            </div>
-            <div class="form-section">
-                <label class="section-label" class="register-term" for="terminos">
-                    Acepto Términos y Condiciones
-                    <input type="checkbox" name="userTerms" id="terminos" >
-                </label>
-                <% if (locals.errors && errors.userTerms) { %>
-                    <div class="feedback">
-                        <%= errors.userTerms.msg %> 
-                    </div>
-                <% } %>
-            </div>
-            <div class="button-section">
-                <button class="clear-button" type="reset">Limpiar</button>
-                <button class="submit-button" type="submit">Crear</button>
-            </div>
-        </form>
+                </div>
+            </form>
+        </div>
     </main>
 
     <!--FOOTER-->

@@ -19,24 +19,29 @@
 
         <section class="article-container" id="destacados">
             
-            <% products.forEach((bici) => { %> 
+            <% products.forEach((product) => { %> 
 
-                <a href="/productos/detalle/<%= bici.id %>"><article>
-                    <% if(bici.discount > 0) { %> 
-                    <p class="article-discount"><%= bici.discount %>% OFF</p>
-                    <% } %> 
-                    <% if(bici.Images[0]) { %>
+                <a href="/productos/detalle/<%= product.id %>"><article>
+                    <% if(product.discount > 0) { %> 
+                        <p class="article-discount"><%= product.discount %>% OFF</p>
+                        <% } else { %> 
+                            <p class="space"></p>
+                        <% } %>
                         <figure class="img-container">
-                            <img src="\images\products\<%= bici.Images[0].fileName %>"  alt="imagen articulo">
+                            <img src="\images\products\<%= product.Images[0].fileName %>"  alt="imagen articulo">
                         </figure>
-                    <% } else { %>
-                        <figure class="img-container">
-                            <img src="\images\products\default-product.jpg"  alt="imagen articulo">
-                        </figure>
-                    <% } %>
-                    <p class="article-name"><%= bici.description %> </p>
-                    <% let priceTH = toThousand(bici.price) %>
-                    <p class="article-price">$ <%= priceTH %> </p>
+                        <p class="article-name"><%= product.description %> </p>
+                        <div class="price">
+                            <% let price = toThousand(product.price) %>
+                            <% let discountPrice = toThousand((product.price - (product.price / 100 * product.discount)).toFixed(0)) %>
+                            
+                            <% if (product.discount > 0) { %>  
+                                <p class="article-discount-price">$ <%= price %></p>
+                                <p class="article-price">$ <%= discountPrice %> </p>
+                            <% } else { %>
+                                <p class="article-price-nodisc">$ <%= price %> </p>
+                            <% } %>
+                        </div>
                 </article></a>
         
                 <% }) %>
