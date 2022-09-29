@@ -15,37 +15,44 @@
 
     <main class="product-detail-main">
         <article class="product-detail">
-            <div class="img-container">
-                <img src="\images\products\<%= product.Images[0].fileName %>" alt="<%= product.description %>">
-            </div>
-            <div class="right-container">
-                <h3><%= product.description %></h3>
-                <h6><%= product.discount %>% OFF</h6>
-                <% let priceTH = toThousand(product.price) %>
-                <h5>$ <%= priceTH %></h5>
-                <div class="add-to-cart">
-                    <a href="/carrito">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="top-container">
+                <div class="img-container">
+                    <img src="\images\products\<%= product.Images[0].fileName %>" alt="<%= product.description %>">
                 </div>
-                <% if (locals.isLogged && locals.admin) { %>
-                    <div class="edit-delete-container">
-                        <a href="/productos/editar/<%= product.id %>">Editar</a>
-                        <form action="/productos/eliminar/<%= product.id %>?_method=DELETE" method="POST">
-                            <button type="submit">Eliminar</button>
-                        </form>
+                <div class="right-container">
+                    <h3><%= product.description %></h3>
+                    <h6><%= product.discount %>% OFF</h6>
+                    <% let priceTH = toThousand(product.price) %>
+                    <h5>$ <%= priceTH %></h5>
+                    <div class="add-to-cart">
+                        <a href="/carrito">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
-                <% } %>
+                    <% if (locals.isLogged && locals.admin) { %>
+                        <div class="edit-delete-container">
+                            <a href="/productos/editar/<%= product.id %>">Editar</a>
+                            <form action="/productos/eliminar/<%= product.id %>?_method=DELETE" method="POST">
+                                <button type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
             </div>
-            <div class="details">
-                <h4>Especificaciones</h4>
-                <p>Marca: <%= product.Brand.name %></p>
-                <p>Modelo: <%= product.model %></p>
-                <p>Talla: <%= product.Size.name %></p>
-                <p>Color: <%= product.Color.name %></p>
-                <p>Rodado: <%= product.WheelSize.number %></p>
-                <p>Cuadro: <%= product.Frame.name %></p>
-                <p>Velocidades: <%= product.Shift.number %></p>
-                <p>Frenos: <%= product.Brake.type %></p>
-                <p>Horquilla de suspension: <%= product.Suspension.type %></p>
+            <div class="bottom-container">
+                <div class="details">
+                    <h4>Especificaciones</h4>
+                    <p>Marca: <%= product.Brand.name %></p>
+                    <p>Modelo: <%= product.model %></p>
+                    <p>Talla: <%= product.Size.name %></p>
+                    <p>Color: <%= product.Color.name %></p>
+                    <p>Rodado: <%= product.WheelSize.number %></p>
+                    <p>Cuadro: <%= product.Frame.name %></p>
+                    <p>Velocidades: <%= product.Shift.number %></p>
+                    <p>Frenos: <%= product.Brake.type %></p>
+                    <p>Horquilla de suspension: <%= product.Suspension.type %></p>
+                </div>
+                <div class="paying-methods">
+                    <h4>Metodos de pago</h4>
+                </div>
             </div>
         </article>
     </main>
