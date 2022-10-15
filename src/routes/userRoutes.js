@@ -10,12 +10,12 @@ const loggedUserRedMW = require('../middleware/loggedUserRedMW')
 
 /*RUTAS*/
 
-router.get('/login', guestRedMW, userController.loginForm);
-router.post('/login', loginValidations, userController.login);
-router.get('/register', guestRedMW, userController.registerForm);
-router.post('/register', upload.array('image'), validations, userController.register);
-router.get('/profile', loggedUserRedMW, userController.profile);
-router.get('/logout', userController.logout);
+router.get('/', userController.list);
+router.get('/:id', userController.detail);
+//router.post('/crear', upload.array('image'), userController.store);
+//router.put('/editar/:id', upload.array('image'), userController.update);
+//router.delete('/eliminar/:id', userController.delete);
+
 
 
 module.exports = router;

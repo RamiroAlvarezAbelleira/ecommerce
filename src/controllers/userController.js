@@ -7,85 +7,130 @@ const fs = require('fs');
 
 const controlador = {
 
-    loginForm: (req, res) => {
-        res.render('users/login');
-    },
-
-    login: async (req, res) => {
-        const resultValidation = validationResult(req);
-
+    list: async (req, res) => {
         try {
-            if(resultValidation.errors.length > 0) {
-                res.render('users/login', {
-                    errors : resultValidation.mapped(),
-                });
+            let data;
+            if (req.query.page <= 0) {
+                let respuesta = {
+                    meta: {
+                        status: 400,
+                        url: `/usuarios${req.url}`
+                    },
+                    data: 'el numero de pagina debe ser mayor o igual a 1'
+                }
+                return res.status(400).json(respuesta)
+            } else if (req.query.page > 0) {
+                data = await User.findAndCountAll({
+                    attributes: ['id', 'firstName', 'lastName', 'email', 'image'],
+                    limit: 10,
+                    offset: (req.query.page - 1) * 10
+                })
             } else {
-                let user = await User.findOne({
-                    where: {
-                        email: {[Op.like]: req.body.email}
-                    }
-                });
-                delete user.password;
-                req.session.userLogged = user;
-                res.redirect('/usuarios/profile')
+                data = await User.findAndCountAll({
+                    attributes: ['id', 'firstName', 'lastName', 'email', 'image']
+                })
             }
+
+            let users = [...data.rows];
+            let total = data.count;
+            let cantPaginas = Math.ceil(total/10);
+
+            if (req.query.page && req.query.page > cantPaginas) {
+                let respuesta = {
+                    meta: {
+                        status: 400,
+                        url: `/usuarios${req.url}`
+                    },
+                    data: `el numero total de paginas es ${cantPaginas}`
+                }
+                return res.status(400).json(respuesta)
+            }
+
+            users = users.map(user => {
+                return {
+                    id: user.id,
+                    name: `${user.firstName} ${user.lastName}`,
+                    email: user.email,
+                    detail: `/usuarios/${user.id}`
+                }
+            })
+
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    total: users.length,
+                    next: (req.query.page && req.query.page < total/10) ? `/usuarios?page=${+req.query.page + 1}` : '',
+                    previous: +req.query.page > 1 ? `/usuarios?page=${+req.query.page - 1}` : ''
+                },
+                data: users
+            }
+
+            return res.status(200).json(respuesta)
+
         } catch (error) {
             res.json(error.message)
-        }
-
-        
-        
+        }  
     },
 
-    registerForm: (req, res) => {
-        res.render('users/register');
-    },
-
-    register: async (req, res) => {
-        const resultValidation = validationResult(req);
-
+    detail: async (req, res) => {
         try {
-            if(resultValidation.errors.length > 0) {
-                const oldData = req.body
-                let files = req.files;
-                if (files) {
-                    for (let i = 0; i < files.length; i++) {
-                        fs.unlinkSync(path.resolve(__dirname, '../../public/images/users/' + files[i].filename))
-                    }
+            let id = +req.params.id;
+            let data = await User.findByPk(id);
+            let user = await data?.toJSON()
+
+            if (user == null) {
+                let respuesta = {
+                    meta: {
+                        status: 404,
+                        url: `/usuarios/${id}`
+                    },
+                    data: 'El usuario no existe'
                 }
-                res.render('users/register', {
-                    errors : resultValidation.mapped(),
-                    oldData
-                });
+                return res.status(404).json(respuesta)
             }
-            else {
-                let password = req.body.password;
-                let user = {
-                    ...req.body,
-                    password: bcryptjs.hashSync(password, 10),
-                    roleId: 2
-                }
-                delete user['user-confirm-password']
-                delete user.userTerms
-                user.image = req.files.length > 0 ? req.files.filename : 'default-user.png';
-                await User.create(user)
-                res.redirect('/usuarios/login');
-                }
+
+            delete user.password;
+            delete user.roleId;
+            let userImage = user.image;
+            user.image = `/images/users/${userImage}`
+
+
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    url: `/usuarios/${id}`
+                },
+                data: user
+            }
+            return res.status(200).json(respuesta)
+            
         } catch (error) {
             res.json(error.message)
-        }
-        
+        }  
     },
 
-    profile: (req, res) => {
-        res.render('users/profile', {
-            user: req.session.userLogged
-        });
+    store: async (req, res) => {
+        try {
+
+        } catch (error) {
+            res.json(error.message)
+        }  
     },
 
-    logout: (req, res) => {
-        req.session.destroy()
-        res.redirect('/');
+    update: async (req, res) => {
+        try {
+
+        } catch (error) {
+            res.json(error.message)
+        }  
+    },
+
+    delete: async (req, res) => {
+        try {
+
+        } catch (error) {
+            res.json(error.message)
+        }  
     }
 }
 
