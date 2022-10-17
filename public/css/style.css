@@ -646,7 +646,7 @@ section div.copyrights p {
 }
 
 @media(min-width: 481px) {
-    /*------HEADER------*/
+    /*HEADER*/
 
     header {
         justify-content: space-between;
@@ -762,7 +762,7 @@ section div.copyrights p {
         display: none;
     }
 
-    /*------HOME------*/
+    /*HOME*/
 
     .slider-container {
         height: 45vw;
@@ -789,7 +789,7 @@ section div.copyrights p {
         top: 10px;
     }
 
-    /*------FOOTER------*/
+    /*FOOTER*/
 
     section.footer-benefits {
         justify-content: space-around;
