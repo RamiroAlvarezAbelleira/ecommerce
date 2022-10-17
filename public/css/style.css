@@ -1050,7 +1050,7 @@ section div.copyrights p {
 
     main.product-detail-main article.product-detail div.right-container {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         flex-direction: column;
         align-items: flex-end;
         width: 250px;
@@ -1072,23 +1072,24 @@ section div.copyrights p {
 
     main.product-detail-main article.product-detail div.right-container h6 {
         margin: 0;
-        margin-top: 4vw;
     }
     
     main.product-detail-main article.product-detail div.right-container h5 {
         margin: 0;
-        margin-bottom: 40px;
     }
-    
-    main.product-detail-main article.product-detail div.right-container div.add-to-cart {
-        justify-content: flex-end;
+
+    main.product-detail-main article.product-detail div.right-container h5.old-price {
+        color: grey;
+        text-decoration: line-through;
+        font-size: 16px;
     }
     
     main.product-detail-main article.product-detail div.right-container div.edit-delete-container {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin: 10vw 0;
+        margin: 0;
+        width: 100%;
     }
     
     main.product-detail-main article.product-detail div.right-container div.edit-delete-container a {

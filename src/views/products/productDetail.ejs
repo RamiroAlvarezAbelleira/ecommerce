@@ -21,9 +21,17 @@
                 </div>
                 <div class="right-container">
                     <h3><%= product.description %></h3>
-                    <h6><%= product.discount %>% OFF</h6>
-                    <% let priceTH = toThousand(product.price) %>
-                    <h5>$ <%= priceTH %></h5>
+                    <% if(product.discount > 0) { %>
+                        <% let discountPrice = toThousand((product.price - (product.price / 100 * product.discount)).toFixed(0)) %>
+                        <% let priceTH = toThousand(product.price) %>
+                        <h5 class="old-price">$ <%= priceTH %></h5>
+                        <h6><%= product.discount %>% OFF</h6>
+                        <h5>$ <%= discountPrice %></h5>
+                    <% } else { %>
+                        <% let priceTH = toThousand(product.price) %>
+                        <h5>$ <%= priceTH %></h5>
+                    <% } %>
+                    
                     <div class="add-to-cart">
                         <a href="/carrito">Agregar al carrito <i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
