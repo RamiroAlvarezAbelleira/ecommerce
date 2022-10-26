@@ -1,5 +1,5 @@
 {
-  "name": "intro-html",
+  "name": "ecommerce",
   "version": "1.0.0",
   "description": "\"# intro-html\"",
   "main": "app.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RamiroAlvarezAbelleira/intro-html.git"
+    "url": "git+https://github.com/RamiroAlvarezAbelleira/ecommerce.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RamiroAlvarezAbelleira/intro-html/issues"
+    "url": "https://github.com/RamiroAlvarezAbelleira/ecommerce/issues"
   },
-  "homepage": "https://github.com/RamiroAlvarezAbelleira/intro-html#readme",
+  "homepage": "https://github.com/RamiroAlvarezAbelleira/ecommerce#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
